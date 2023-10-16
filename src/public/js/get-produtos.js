@@ -22,18 +22,18 @@ inputElement.addEventListener('input', (e) => {
 
 async function pesquisaProdutos (result, type) {
   if (type == '') {
-    const retorno = await fetch('http://localhost:8000/api/products/categoria/' + result, {
+    const retorno = await fetch('http://catalogo-aluita.onrender.com/api/products/categoria/' + result, {
       headers: {"Acess-Control-Allow-Origin": "*"}
     })
     const produtos = await retorno.json()
     preencheTela(produtos)   
   } else {
     if (result == ''){ 
-      const retorno = await fetch('http://localhost:8000/api/products')
+      const retorno = await fetch('http://catalogo-aluita.onrender.com/api/products')
       const produtos = await retorno.json()
       preencheTela(produtos) 
     } else {
-      const retorno = await fetch('http://localhost:8000/api/products/' + type + '/' + result)
+      const retorno = await fetch('http://catalogo-aluita.onrender.com/api/products/' + type + '/' + result)
       const produtos = await retorno.json()
       preencheTela(produtos)
     }
@@ -41,13 +41,13 @@ async function pesquisaProdutos (result, type) {
 }
 
 async function pesquisaProdutoUni (result) {
-  const retorno = await fetch('http://localhost:8000/api/products/codigo/' + result)
+  const retorno = await fetch('http://catalogo-aluita.onrender.com/api/products/codigo/' + result)
   const produto = await retorno.json()
   preencheTelaUni(produto) 
 }
 
 async function listaCategorias () {
-  const retorno = await fetch('http://localhost:8000/api/products/categorias')
+  const retorno = await fetch('http://catalogo-aluita.onrender.com/api/products/categorias')
   const categorias = await retorno.json()
   preencheCategorias(categorias)
 }
