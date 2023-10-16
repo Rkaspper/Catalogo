@@ -7,6 +7,7 @@ const db = require('../config/database');
 
 // ==> Método responsável por listar todos os 'Products':
 exports.listAllProducts = async (req, res) => {
+  console.log('controller')
   const response = await db.query(
     'SELECT * FROM itens_catalogo ORDER BY codigo LIMIT 50 ',
   );
