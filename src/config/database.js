@@ -11,7 +11,7 @@ dotenv.config();
 // ==> Conexão com a Base de Dados:
 const pool = new Pool({
   dialect: 'postgres',
-  host: '88.0.1.3',
+  host: '167.250.29.154',
   user: 'srv.giro',
   password: 'cVlzJ7QaBfAa2f1GS4ln',
   database: 'datawarehouse',
