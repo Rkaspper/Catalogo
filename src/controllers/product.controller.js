@@ -21,6 +21,13 @@ exports.listAllCategoria = async (req, res) => {
   res.status(200).send(response.rows);
 };
 
+// ==> Método responsável por listar todos os 'Grupos':
+exports.listAllGrupo = async (req, res) => {
+  const response = await db.query(
+    'SELECT distinct grupo FROM itens_catalogo ORDER BY grupo LIMIT 50 ',
+  );
+  res.status(200).send(response.rows);
+};
 
 // ==> Método responsável por selecionar 'Product' pelo 'Codigo':
 exports.findProductByCodigo = async (req, res) => {
@@ -48,6 +55,16 @@ exports.findProductByCategoria = async (req, res) => {
   const response = await db.query(
     'SELECT * FROM itens_catalogo WHERE categoria = $1 LIMIT 50 ',
     [productCat],
+  );
+  res.status(200).send(response.rows);
+};
+
+// ==> Método responsável por selecionar 'Product' pelo 'Grupo':
+exports.findProductByGrupo = async (req, res) => {
+  const productGup = req.params.grupo;
+  const response = await db.query(
+    'SELECT * FROM itens_catalogo WHERE grupo = $1 LIMIT 50 ',
+    [productGup],
   );
   res.status(200).send(response.rows);
 };

@@ -12,10 +12,19 @@
         <div class="container px-4 px-lg-5">
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                    Catagorias
+                    Familias
                 </button>
 
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" id="categoria">
+                </ul>
+            </div>
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                    Grupos
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" id="grupo">
                 </ul>
             </div>
 
@@ -50,7 +59,12 @@
         function getCateProds(categoria){
             pesquisaProdutos(categoria, '')
         }     
-    </script>  
+    </script>
+    <script>
+        function getGrupProds(grupo){
+            pesquisaProdutos(grupo, 'g')
+        }     
+    </script>   
     <script>
         function getProdUni(codigo){
             pesquisaProdutoUni(codigo)

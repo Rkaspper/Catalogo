@@ -2,6 +2,8 @@ const divProdutos = document.querySelector('#produtos')
 
 const divCategoria = document.querySelector('#categoria')
 
+const divGrupo = document.querySelector('#grupo')
+
 const inputElement = document.querySelector('#search-input')
 
 const typeElement = document.querySelector('#search-type')
@@ -26,7 +28,13 @@ async function pesquisaProdutos (result, type) {
       headers: {"Acess-Control-Allow-Origin": "*"}
     })
     const produtos = await retorno.json()
-    preencheTela(produtos)   
+    preencheTela(produtos)    
+  } else if (type == 'g') {
+    const retorno = await fetch('https://catalogo-aluita.onrender.com/api/products/grupo/' + result, {
+      headers: {"Acess-Control-Allow-Origin": "*"}
+    })
+    const produtos = await retorno.json()
+    preencheTela(produtos)  
   } else {
     if (result == ''){ 
       const retorno = await fetch('https://catalogo-aluita.onrender.com/api/products')
@@ -52,13 +60,17 @@ async function listaCategorias () {
   preencheCategorias(categorias)
 }
 
+async function listaGrupos () {
+  const retorno = await fetch('https://catalogo-aluita.onrender.com/api/products/grupos')
+  const grupos = await retorno.json()
+  preencheGrupos(grupos)
+}
 
 function preencheTela (produto) {
   divProdutos.innerHTML = ''
 
   produto.forEach(produto => {
     
-  
     const novoProdutoHTML = `
         <div class="card style="width: 18rem;"> 
           <!-- Product image-->
@@ -116,11 +128,21 @@ function preencheCategorias (categorias) {
     const listaCategoriasHTML = `    
           <li><a class="dropdown-item" href="#" value=${categorias.categoria} id="cate" onclick="getCateProds('${categorias.categoria}')" >${categorias.categoria}</a></li>
         `
-
        divCategoria.innerHTML = divCategoria.innerHTML + listaCategoriasHTML
   })
 }
 
+function preencheGrupos (grupos) {
+  divGrupo.innerHTML = ''
+  grupos.forEach(grupos => {
+  
+    const listaGruposHTML = `    
+          <li><a class="dropdown-item" href="#" value=${grupos.grupo} id="cate" onclick="getGrupProds('${grupos.grupo}')" >${grupos.grupo}</a></li>
+        `
+        divGrupo.innerHTML = divGrupo.innerHTML + listaGruposHTML
+  })
+}
 
 pesquisaProdutos('MAQUINAS', '')
 listaCategorias()
+listaGrupos()
