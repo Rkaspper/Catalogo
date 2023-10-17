@@ -62,7 +62,7 @@ function preencheTela (produto) {
     const novoProdutoHTML = `
         <div class="card style="width: 18rem;"> 
           <!-- Product image-->
-          <img class="card-img-top" src=${produto.imagem} alt="Image" height="250" />
+          <img class="card-img-top" src="/img/aluita/${produto.imagem}.jpg" alt="Image" height="250" />
           <!-- Product details-->
           <div class="card-body p-4">
               <div class="text-center">
