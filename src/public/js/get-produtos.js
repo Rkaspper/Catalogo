@@ -97,8 +97,7 @@ function preencheTelaUni (produto) {
   divProdutos.innerHTML = ''
   produto.forEach(produto => {
     const novoProdutoHTML = `
-      <img class="card-img-top" src=${produto.imagem} alt="Card image cap" height="400" width="600">
-
+      <img class="card-img-top" src="/img/aluita/${produto.imagem}.jpg" alt="Card image cap" height="400" width="400">
       <div class="card-body">
         <h5 class="card-title">${produto.codigo}</h5>
         <button href="#" value=${produto.categoria} id="cate" onclick="getCateProds('${produto.categoria}')" >${produto.categoria}</button>
